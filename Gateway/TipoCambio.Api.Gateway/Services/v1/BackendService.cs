@@ -158,5 +158,28 @@ namespace TipoCambio.Api.Gateway.Services.v1
                 return new ExchangeListRS();
             }
         }
+
+        public async Task<ExchangeRS> SelectByIdExchange(RequestWith<ExchangeRQ> request)
+        {
+            try
+            {
+                _client.DefaultRequestHeaders.Clear();
+
+                var json = JsonSerializer.Serialize(request, new JsonSerializerOptions { IgnoreNullValues = true });
+
+                var rs = await _client.SendAsync(new HttpRequestMessage
+                {
+                    Method = HttpMethod.Get,
+                    RequestUri = new Uri($"{_url}/v1/api/ExchangeRate/SelectBy"),
+                    Content = new StringContent(json, Encoding.UTF8, MediaTypeNames.Application.Json)
+                });
+
+                return JsonSerializer.Deserialize<ExchangeRS>(await rs.Content.ReadAsStringAsync());
+            }
+            catch (Exception ex)
+            {
+                return new ExchangeRS();
+            }
+        }
     }
 }

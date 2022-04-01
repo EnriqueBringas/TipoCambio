@@ -24,7 +24,7 @@ namespace TipoCambio.Api.Gateway.Controllers.v1
             _service = service;
         }
 
-        [HttpGet("Currency")]
+        [HttpPost("Currency")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(ResponseWith<CurrencyRS[]>))]
         [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest, type: typeof(Response))]
         public async Task<IActionResult> Currency(Request request)
@@ -34,7 +34,7 @@ namespace TipoCambio.Api.Gateway.Controllers.v1
             return Ok(lresult);
         }
 
-        [HttpGet("ChangeMoney")]
+        [HttpPost("ChangeMoney")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(ResponseWith<ChangeMoneyRS>))]
         [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest, type: typeof(Response))]
         public async Task<IActionResult> ChangeMoney(RequestWith<ChangeMoneyRQ> request)
@@ -74,12 +74,22 @@ namespace TipoCambio.Api.Gateway.Controllers.v1
             return Ok(lresult);
         }
 
-        [HttpGet("SelectExchange")]
+        [HttpPost("SelectExchange")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(ResponseWith<ExchangeRS[]>))]
         [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest, type: typeof(Response))]
         public async Task<IActionResult> SelectExchange(RequestWith<ExchangeRQ> request)
         {
             var lresult = await _service.SelectExchange(request);
+
+            return Ok(lresult);
+        }
+
+        [HttpPost("SelectByIdExchange")]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, type: typeof(ResponseWith<ExchangeRS>))]
+        [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest, type: typeof(Response))]
+        public async Task<IActionResult> SelectByIdExchange(RequestWith<ExchangeRQ> request)
+        {
+            var lresult = await _service.SelectByIdExchange(request);
 
             return Ok(lresult);
         }

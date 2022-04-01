@@ -4,5 +4,6 @@
     {
         public string AuthenticationAPI { get; set; }
         public string BackendAPI { get; set; }
+        public string[] Cors { get; set; }
     }
 }

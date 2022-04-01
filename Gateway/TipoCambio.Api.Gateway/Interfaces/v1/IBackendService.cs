@@ -14,5 +14,6 @@ namespace TipoCambio.Api.Gateway.Interfaces.v1
         Task<ExchangeRS> UpdateExchange(RequestWith<ExchangeRQ> request);
         Task<ExchangeDeleteRS> DeleteExchange(RequestWith<ExchangeRQ> request);
         Task<ExchangeListRS> SelectExchange(Request request);
+        Task<ExchangeRS> SelectByIdExchange(RequestWith<ExchangeRQ> request);
     }
 }
