@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TipoCambio.Api.Backend.Business\TipoCambio.Api.Backend.Business.csproj" />
+    <ProjectReference Include="..\TipoCambio.Api.Backend.Entity\TipoCambio.Api.Backend.Entity.csproj" />
+    <ProjectReference Include="..\TipoCambio.Api.Backend.Interface\TipoCambio.Api.Backend.Interface.csproj" />
+  </ItemGroup>
+
+</Project>
